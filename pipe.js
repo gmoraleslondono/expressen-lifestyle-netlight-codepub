@@ -37,7 +37,9 @@ class Pipe {
    * @custom
    ****************************************************/
   show() {
-
+    fill(121, 85, 72);
+    rect(this.x, 0, this.width, this.topHeight);
+    rect(this.x, this.bottomY, this.width, this.bottomHeight);
   }
 
   /****************************************************
@@ -47,7 +49,7 @@ class Pipe {
    * @custom
    ****************************************************/
   update() {
-
+    this.x -= this.speed;
   }
 
   /****************************************************
@@ -55,7 +57,11 @@ class Pipe {
    * @custom
    ****************************************************/
   hits(wasp) {
-
+    if (wasp.y < this.topHeight || wasp.y > CANVAS_HEIGHT - this.bottomHeight) {
+      if (wasp.x > this.x && wasp.x < this.x + this.topWidth) return true;
+      if (wasp.x > this.x && wasp.x < this.x + this.width) return true;
+    }
+    return false;
   }
 
   /****************************************************
@@ -63,7 +69,11 @@ class Pipe {
    * @custom
    ****************************************************/
   pass(wasp) {
-
+    if (wasp.x > this.x && !this.passed) {
+      this.passed = true;
+      return true;
+    }
+    return false;
   }
 
   /****************************************************

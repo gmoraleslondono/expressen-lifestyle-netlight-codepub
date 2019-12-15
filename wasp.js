@@ -35,7 +35,7 @@ class Wasp {
    * @custom
    ****************************************************/
   show() {
-
+    image(waspImg, this.x, this.y, this.width, this.height);
   }
 
 
@@ -44,6 +44,17 @@ class Wasp {
    * @custom
    ****************************************************/
   update() {
+    this.speed += this.gravity;
+    this.y += this.speed;
+
+    if (this.y > CANVAS_HEIGHT) {
+      this.y = CANVAS_HEIGHT;
+      this.speed = 0;
+    }
+    if (this.y < 0) {
+      this.y = 0;
+      this.speed = 0;
+    }
 
   }
 
@@ -53,6 +64,6 @@ class Wasp {
    * @custom
    ****************************************************/
   up() {
-
+    this.speed += this.lift;
   }
 }
