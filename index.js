@@ -83,6 +83,7 @@ function draw() {
     background.show();
     background.update();
     wasp.show();
+    if (key === " ") {
     wasp.update();
     if (frameCount % 100 === 0) pipes.push(new Pipe());
     for (let pipe of pipes) {
@@ -91,6 +92,8 @@ function draw() {
         if (pipe.hits(wasp)) gameOver();
         if (pipe.pass(wasp)) score++;
       }
+
+    }
 
       showScore();
 }
