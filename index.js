@@ -84,18 +84,18 @@ function draw() {
     background.update();
     wasp.show();
     if (key === " ") {
-    wasp.update();
-    if (frameCount % 100 === 0) pipes.push(new Pipe());
-    for (let pipe of pipes) {
-        pipe.show();
-        pipe.update();
-        if (pipe.hits(wasp)) gameOver();
-        if (pipe.pass(wasp)) score++;
-      }
+        wasp.update();
+        if (frameCount % 100 === 0) pipes.push(new Pipe());
+        for (let pipe of pipes) {
+            pipe.show();
+            pipe.update();
+            if (pipe.hits(wasp)) gameOver();
+            if (pipe.pass(wasp)) score++;
+        }
 
     }
 
-      showScore();
+    showScore();
 }
 
 
@@ -138,7 +138,7 @@ function startGame() {
  ****************************************************/
 function gameOver() {
     textSize(50);
-    fill(000);
+    fill("tomato");
     text("Game Over", 50, 300);
     isOver = true;
     noLoop();
